@@ -1,0 +1,226 @@
+/* =====================================================================
+   ระบบแจ้งซ่อม — theme.css  (โหลดหลัง bootstrap.min.css เสมอ)
+   SECTION 1 = ตัวแปรสี แก้เฉพาะส่วนนี้เวลาเปลี่ยนหน่วยงาน
+   ===================================================================== */
+
+/* ---------- SECTION 1 : COLOR TOKENS ---------- */
+:root{
+  --c-brand:        #163B2E;   /* เขียวเข้ม sidebar */
+  --c-brand-2:      #1E5340;
+  --c-accent:       #C9A227;   /* ทอง — ขีด active */
+  --c-primary:      #1E7A5A;   /* ปุ่มหลัก */
+  --c-primary-dark: #166247;
+  --c-primary-soft: #E8F3EE;
+  --c-danger:       #B3261E;
+  --c-danger-soft:  #FBE9E7;
+  --c-warn:         #B8730B;
+  --c-warn-soft:    #FDF1DC;
+  --c-info:         #1B5E92;
+  --c-info-soft:    #E7F0F8;
+  --c-ink:          #16211C;
+  --c-ink-2:        #5A6B63;
+  --c-line:         #DFE5E2;
+  --c-bg:           #F4F6F5;
+  --c-card:         #FFFFFF;
+  --c-head:         #F2F6F4;   /* หัวการ์ด / หัวตาราง */
+
+  --sidebar-w: 248px;
+  --topbar-h:  56px;
+  --radius:    10px;
+  --shadow:    0 1px 2px rgba(22,33,28,.06), 0 4px 16px rgba(22,33,28,.05);
+}
+
+/* ---------- SECTION 2 : BASE ---------- */
+*{ -webkit-tap-highlight-color: transparent; }
+body{
+  font-family:'Sarabun',system-ui,-apple-system,'Segoe UI',sans-serif;
+  background:var(--c-bg); color:var(--c-ink);
+  font-size:15px; margin:0;
+}
+a{ text-decoration:none; color:var(--c-primary); }
+.text-muted-2{ color:var(--c-ink-2)!important; }
+.hide{ display:none!important; }
+
+/* ---------- SECTION 3 : LOGIN ---------- */
+.rr-login{
+  min-height:100vh; display:grid; place-items:center; padding:24px;
+  background:radial-gradient(120% 120% at 50% 0%, #21523F 0%, var(--c-brand) 55%, #0E2A20 100%);
+}
+.rr-login-card{
+  width:100%; max-width:400px; background:var(--c-card);
+  border-radius:14px; box-shadow:0 18px 48px rgba(0,0,0,.28); overflow:hidden;
+}
+.rr-login-head{ padding:26px 26px 16px; text-align:center; }
+.rr-login-head img{ max-height:64px; margin-bottom:12px; }
+.rr-login-head h1{ font-size:20px; font-weight:700; margin:0; }
+.rr-login-head p{ font-size:13px; color:var(--c-ink-2); margin:4px 0 0; }
+.rr-login-body{ padding:6px 26px 26px; }
+.rr-login-foot{
+  padding:12px; text-align:center; font-size:12px;
+  color:var(--c-ink-2); background:var(--c-head); border-top:1px solid var(--c-line);
+}
+
+/* ---------- SECTION 4 : SHELL (ห้ามใช้ flex กับ wrapper) ---------- */
+.rr-sidebar{
+  position:fixed; inset:0 auto 0 0; width:var(--sidebar-w); z-index:1040;
+  background:var(--c-brand); color:#D7E4DE; overflow-y:auto;
+  transition:transform .2s ease;
+}
+.rr-brand{
+  display:flex; align-items:center; gap:10px; padding:14px 16px;
+  border-bottom:1px solid rgba(255,255,255,.10);
+}
+.rr-brand img{ width:34px; height:34px; object-fit:contain; border-radius:8px; background:#fff; padding:3px; }
+.rr-brand .t{ font-size:15px; font-weight:700; color:#fff; line-height:1.2; }
+.rr-brand .s{ font-size:11px; color:#9FB8AE; }
+
+.rr-navgroup{
+  font-size:11px; letter-spacing:.08em; text-transform:uppercase;
+  color:#8FA79D; padding:16px 16px 6px;
+}
+.rr-nav a{
+  display:flex; align-items:center; gap:10px;
+  padding:9px 16px; color:#D7E4DE; font-size:14px;
+  border-left:3px solid transparent;
+}
+.rr-nav a:hover{ background:rgba(255,255,255,.06); color:#fff; }
+.rr-nav a.active{
+  background:rgba(255,255,255,.10); color:#fff;
+  border-left-color:var(--c-accent); font-weight:600;
+}
+.rr-nav a .ico{ width:18px; text-align:center; opacity:.9; }
+
+.rr-topbar{
+  position:fixed; top:0; right:0; left:var(--sidebar-w); height:var(--topbar-h); z-index:1030;
+  background:#fff; border-bottom:1px solid var(--c-line);
+  display:flex; align-items:center; gap:12px; padding:0 18px;
+}
+.rr-topbar .org{ font-size:14px; font-weight:600; }
+.rr-topbar .spacer{ flex:1; }
+.rr-user{ display:flex; align-items:center; gap:10px; }
+.rr-user .nm{ font-size:13px; font-weight:600; line-height:1.15; }
+.rr-user .rl{ font-size:11px; color:var(--c-ink-2); }
+.rr-avatar{
+  width:34px; height:34px; border-radius:50%; background:var(--c-primary-soft);
+  color:var(--c-primary); display:grid; place-items:center; font-weight:700; font-size:14px;
+}
+.rr-burger{ display:none; border:0; background:transparent; font-size:20px; color:var(--c-ink); }
+
+.rr-main{
+  margin-left:var(--sidebar-w);
+  padding:calc(var(--topbar-h) + 20px) 20px 40px;
+  box-sizing:border-box;
+  min-height:100vh;
+}
+.rr-backdrop{
+  position:fixed; inset:0; background:rgba(0,0,0,.4); z-index:1035; display:none;
+}
+
+@media (max-width: 991.98px){
+  .rr-sidebar{ transform:translateX(-100%); }
+  body.nav-open .rr-sidebar{ transform:none; }
+  body.nav-open .rr-backdrop{ display:block; }
+  .rr-topbar{ left:0; }
+  .rr-main{ margin-left:0; padding-left:14px; padding-right:14px; }
+  .rr-burger{ display:inline-block; }
+}
+
+/* ---------- SECTION 5 : PAGE PARTS ---------- */
+.page-head{ display:flex; align-items:flex-start; gap:12px; margin-bottom:18px; flex-wrap:wrap; }
+.page-head h2{ font-size:21px; font-weight:700; margin:0; }
+.page-head .sub{ font-size:13px; color:var(--c-ink-2); margin-top:2px; }
+.page-head .act{ margin-left:auto; display:flex; gap:8px; }
+
+.card-x{ background:var(--c-card); border:1px solid var(--c-line); border-radius:var(--radius); box-shadow:var(--shadow); }
+.card-x > .hd{
+  background:var(--c-head); border-bottom:1px solid var(--c-line);
+  padding:11px 16px; font-weight:600; font-size:14px;
+  border-radius:var(--radius) var(--radius) 0 0;
+}
+.card-x > .bd{ padding:16px; }
+
+.stat{ background:var(--c-card); border:1px solid var(--c-line); border-radius:var(--radius); padding:14px 16px; }
+.stat .lbl{ font-size:12px; color:var(--c-ink-2); }
+.stat .val{ font-size:26px; font-weight:700; line-height:1.15; }
+.stat .unit{ font-size:12px; color:var(--c-ink-2); margin-left:4px; }
+
+.table-x{ width:100%; border-collapse:separate; border-spacing:0; font-size:14px; }
+.table-x th{
+  background:var(--c-head); color:var(--c-ink-2); font-weight:600; font-size:12.5px;
+  text-align:left; padding:10px 12px; border-bottom:1px solid var(--c-line); white-space:nowrap;
+}
+.table-x td{ padding:11px 12px; border-bottom:1px solid var(--c-line); vertical-align:middle; }
+.table-x tbody tr:hover{ background:#FAFCFB; }
+
+.pill{ display:inline-block; padding:3px 10px; border-radius:999px; font-size:12px; font-weight:600; line-height:1.5; }
+.pill-solid{ background:var(--c-primary); color:#fff; }
+.pill-soft{  background:var(--c-primary-soft); color:var(--c-primary-dark); }
+.pill-line{  background:#fff; color:var(--c-ink-2); border:1px solid var(--c-line); }
+.pill-warn{  background:var(--c-warn-soft); color:var(--c-warn); }
+.pill-danger{background:var(--c-danger-soft); color:var(--c-danger); }
+.pill-info{  background:var(--c-info-soft); color:var(--c-info); }
+
+.empty{ text-align:center; padding:40px 16px; color:var(--c-ink-2); }
+.empty .ico{ font-size:34px; opacity:.35; display:block; margin-bottom:8px; }
+
+/* ---------- SECTION 6 : BOOTSTRAP RESKIN ---------- */
+.btn{ border-radius:8px; font-size:14px; font-weight:600; padding:.45rem .95rem; }
+.btn-primary{ background:var(--c-primary); border-color:var(--c-primary); }
+.btn-primary:hover,.btn-primary:focus{ background:var(--c-primary-dark); border-color:var(--c-primary-dark); }
+.btn-outline-secondary{ color:var(--c-ink-2); border-color:var(--c-line); background:#fff; }
+.btn-outline-secondary:hover{ background:var(--c-head); color:var(--c-ink); border-color:var(--c-line); }
+.form-label{ font-size:13px; font-weight:600; margin-bottom:4px; }
+.form-control,.form-select{ border-radius:8px; border-color:var(--c-line); font-size:14px; padding:.5rem .75rem; }
+.form-control:focus,.form-select:focus{ border-color:var(--c-primary); box-shadow:0 0 0 3px rgba(30,122,90,.14); }
+.modal-content{ border:0; border-radius:14px; }
+.modal-header{ background:var(--c-head); border-bottom:1px solid var(--c-line); border-radius:14px 14px 0 0; padding:12px 18px; }
+.modal-title{ font-size:16px; font-weight:700; }
+.modal-body{ padding:18px; }
+
+/* ---------- SECTION 7 : TOAST & BUSY ---------- */
+#rrToast{ position:fixed; top:14px; right:14px; z-index:2000; display:flex; flex-direction:column; gap:8px; }
+.rr-toast{
+  min-width:250px; max-width:340px; background:#fff; border:1px solid var(--c-line);
+  border-left:4px solid var(--c-primary); border-radius:10px; padding:11px 14px;
+  box-shadow:0 8px 26px rgba(0,0,0,.14); font-size:14px;
+  animation:rrIn .18s ease-out;
+}
+.rr-toast.err{ border-left-color:var(--c-danger); }
+.rr-toast.warn{ border-left-color:var(--c-warn); }
+@keyframes rrIn{ from{ opacity:0; transform:translateY(-6px);} to{ opacity:1; transform:none;} }
+
+#rrBusy{
+  position:fixed; inset:0; background:rgba(244,246,245,.6); z-index:1990;
+  display:none; place-items:center; backdrop-filter:saturate(120%);
+}
+#rrBusy.on{ display:grid; }
+.rr-spin{
+  width:34px; height:34px; border-radius:50%;
+  border:3px solid var(--c-line); border-top-color:var(--c-primary);
+  animation:rrSpin .7s linear infinite;
+}
+@keyframes rrSpin{ to{ transform:rotate(360deg); } }
+
+/* ---------- SECTION 8 : QR LABELS & PRINT ---------- */
+#printArea{ display:none; }
+
+.qr-sheet{ display:grid; grid-template-columns:repeat(4,1fr); gap:6mm; }
+.qr-label{
+  border:1px dashed #999; border-radius:3mm; padding:4mm 2mm;
+  text-align:center; page-break-inside:avoid; break-inside:avoid;
+}
+.qr-label .qr-img{ display:flex; justify-content:center; }
+.qr-label .qr-img img,
+.qr-label .qr-img canvas{ width:28mm!important; height:28mm!important; }
+.qr-label .qr-code{ font-family:ui-monospace,'Courier New',monospace; font-weight:700; font-size:11pt; margin-top:2mm; }
+.qr-label .qr-asset{ font-size:10pt; font-weight:600; line-height:1.25; }
+.qr-label .qr-loc{ font-size:8pt; color:#444; line-height:1.25; }
+.qr-label .qr-hint{ font-size:7.5pt; color:#666; margin-top:1mm; }
+
+@media print{
+  @page{ size:A4; margin:10mm; }
+  body{ background:#fff; }
+  .rr-sidebar,.rr-topbar,.rr-backdrop,#rrToast,#rrBusy,.modal,.modal-backdrop,.page-head .act{ display:none!important; }
+  .rr-main{ display:none!important; }
+  #printArea{ display:block!important; }
+}

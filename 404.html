@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<title>กำลังนำทาง...</title>
+<script>
+  // GitHub Pages ไม่มี server rewrite — เด้งกลับ index.html แล้วให้ hash router จัดการต่อ
+  var base = location.pathname.split('/').slice(0, 2).join('/') || '/';
+  location.replace(base + '/' + (location.hash || '#/dashboard'));
+</script>
+</head>
+<body></body>
+</html>
