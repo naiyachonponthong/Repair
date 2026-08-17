@@ -7,7 +7,7 @@ window.SP = window.SP || {};
 
 SP.cfg = {
   API_URL : 'https://script.google.com/macros/s/AKfycbzKk0wq2YnELY6rYKvZ_KUgubIyXB9dZIPwJ2ifqM5APjTBql6NOuoYUEmzlFOle886cg/exec',
-  APP_KEY : 'PASTE_APP_KEY_FROM_setupApiLayer',
+  APP_KEY : '8ff8d778b5d24f48b823ec30cbf36829',
   VERSION : '0.1.0',
   APP_NAME: 'ระบบแจ้งซ่อม',
   TOKEN_KEY: 'rr_token',
