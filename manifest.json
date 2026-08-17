@@ -1,0 +1,22 @@
+{
+  "name": "ระบบแจ้งซ่อมและติดตามผล",
+  "short_name": "แจ้งซ่อม",
+  "description": "แจ้งซ่อม ติดตามสถานะ และปิดงานผ่านมือถือ",
+  "start_url": "./index.html#/dashboard",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#163B2E",
+  "theme_color": "#163B2E",
+  "lang": "th",
+  "icons": [
+    { "src": "assets/img/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "assets/img/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "assets/img/icon-maskable.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ],
+  "shortcuts": [
+    { "name": "แจ้งซ่อมใหม่", "url": "./index.html#/tickets" },
+    { "name": "สแกน QR", "url": "./index.html#/scan" },
+    { "name": "งานของช่าง", "url": "./index.html#/work" }
+  ]
+}
